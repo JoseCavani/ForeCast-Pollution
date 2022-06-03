@@ -1,0 +1,28 @@
+
+
+
+
+    <h1>Qualidade do ar</h1>
+
+<div class="Pollution">
+    <table>
+        <div *ngFor="let item of timelinePollution">
+            <th>CO: {{item.co}}</th>
+            <th>NO: {{item.no}}</th>
+            <th>NO2: {{item.no2}}</th>
+            <th>O3: {{item.o3}}</th>
+        </div>
+    </table>
+</div>
+
+    <div [ngSwitch]="this.PollutionIndex">
+    <div *ngSwitchCase="1"></div>
+    <h3>Excelente</h3>
+    <div *ngSwitchCase="2">
+    <h3>Boa</h3>
+    <div *ngSwitchCase="3">
+    <h3>Media</h3>
+    <div *ngSwitchCase="4">
+    <h3>Baixa</h3>
+    <div *ngSwitchCase="5">
+    <h3>Muito baixa</h3>

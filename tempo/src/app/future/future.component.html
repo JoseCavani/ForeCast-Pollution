@@ -1,0 +1,29 @@
+<div class="primary" *ngIf="primaryDisplay">
+    <h3>Previsoes futuras</h3>
+    <ul *ngFor="let forecast of weatherData; let i = index">
+        <li class="main" (click)="toggle(weatherData[i], i)">
+        {{ forecast.dt_txt | date:'EEE, MMM dd' }}
+        <img src = "assets/images/{{ forecast.weather[0].icon}}.png" alt="icon" class="icon">
+        <span>
+            {{forecast.main.temp_min | number:'1.0-0'}}ºC \
+            {{forecast.main.temp_max | number:'1.0-0'}}ºC
+        </span>
+        <span>{{ forecast.weather[0].main}}</span>
+        <i class = "fa fa-caret-down" aia-hidden="true"></i>
+        </li>
+    </ul>
+</div>
+
+
+<div *ngIf="secondaryDisplay">
+    <h3>Previsao Futura</h3>
+    <ul class="sub">
+        <li *ngFor="let forecast of weatherData; let i = index" [ngClass] = "{'selected': selectedIndex == i}">
+         <span (click)="showDetails(weatherData[i], i)" >  {{ forecast.dt_txt | date: 'EEE'}} </span>
+        </li>
+        <i class ="fa fa-caret-up" aria-hidden="true" (click)="toggle(undefined, 0)"></i>
+    </ul>
+    <div>
+        {{forecastDetails.main.temp | number: '1.0-0'}} ºC 
+    </div>
+</div>
